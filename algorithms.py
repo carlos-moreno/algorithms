@@ -25,3 +25,12 @@ def radix(str_number, radix):
             return -1
         summation += digits.index(x) * pow(radix, i)
     return summation
+
+
+def second_index(text: str, symbol: str) -> [int, None]:
+    """
+        returns the second index of a symbol in a given text
+    """
+    l = [i for i, x in enumerate(text) if x == symbol]
+    if len(l) > 1:
+        return l[1]
