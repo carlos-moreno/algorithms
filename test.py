@@ -1,5 +1,5 @@
 import unittest
-from algorithms import mult_two, best_stock, radix
+from algorithms import mult_two, best_stock, radix, second_index
 
 
 class TestMultTwo(unittest.TestCase):
@@ -39,3 +39,18 @@ class TestRadix(unittest.TestCase):
     def test_result_is_1_negative(self):
         self.assertEqual(radix("AB", 10), -1)
         self.assertEqual(radix("909", 9), -1)
+
+
+class TestSecondIndex(unittest.TestCase):
+    def test_result_is_3(self):
+        self.assertEqual(second_index("sims", "s"), 3)
+
+    def test_result_is_12(self):
+        self.assertEqual(second_index("find the river", "e"), 12)
+
+    def test_result_is_none(self):
+        self.assertEqual(second_index("hi", " "), None)
+        self.assertEqual(second_index("hi mayor", " "), None)
+
+    def test_result_is_5(self):
+        self.assertEqual(second_index("hi mr Mayor", " "), 5)
