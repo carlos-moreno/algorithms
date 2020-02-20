@@ -1,5 +1,12 @@
 import unittest
-from algorithms import mult_two, best_stock, radix, second_index, first_word
+from algorithms import (
+    mult_two,
+    best_stock,
+    radix,
+    second_index,
+    first_word,
+    first_word_complex,
+)
 
 
 class TestMultTwo(unittest.TestCase):
@@ -65,3 +72,24 @@ class TestFirstWorld(unittest.TestCase):
 
     def test_result_is_hi(self):
         self.assertEqual(first_word("hi"), "hi")
+
+
+class TestFirstWorldComplex(unittest.TestCase):
+    def test_result_is_hello(self):
+        self.assertEqual(first_word_complex("Hello world"), "Hello")
+        self.assertEqual(first_word_complex("Hello.World"), "Hello")
+
+    def test_result_is_a(self):
+        self.assertEqual(first_word_complex(" a word "), "a")
+
+    def test_result_is_hi(self):
+        self.assertEqual(first_word_complex("hi"), "hi")
+
+    def test_result_is_dont(self):
+        self.assertEqual(first_word_complex("don't touch it"), "don't")
+
+    def test_result_is_greetings(self):
+        self.assertEqual(first_word_complex("greetings, friends"), "greetings")
+
+    def test_result_is_and(self):
+        self.assertEqual(first_word_complex("... and so on ..."), "and")
