@@ -1,5 +1,5 @@
 import unittest
-from algorithms import mult_two, best_stock, radix, second_index
+from algorithms import mult_two, best_stock, radix, second_index, first_word
 
 
 class TestMultTwo(unittest.TestCase):
@@ -54,3 +54,14 @@ class TestSecondIndex(unittest.TestCase):
 
     def test_result_is_5(self):
         self.assertEqual(second_index("hi mr Mayor", " "), 5)
+
+
+class TestFirstWorld(unittest.TestCase):
+    def test_result_is_hello(self):
+        self.assertEqual(first_word("Hello world"), "Hello")
+
+    def test_result_is_a(self):
+        self.assertEqual(first_word("a word"), "a")
+
+    def test_result_is_hi(self):
+        self.assertEqual(first_word("hi"), "hi")
