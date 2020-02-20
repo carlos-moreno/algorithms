@@ -53,7 +53,7 @@ def first_word_complex(text: str) -> str:
             l.append(x)
         else:
             l.append(" ")
-    w = ''.join(l)
+    w = "".join(l)
     result = w.split()
     return result[0]
 
@@ -62,5 +62,20 @@ def bigger_price(limit: int, data: list) -> list:
     """
         TOP most expensive goods
     """
-    result = sorted(data, key=lambda k: k['price'], reverse=True)
+    result = sorted(data, key=lambda k: k["price"], reverse=True)
     return result[:limit]
+
+
+def popular_words(text: str, words: list) -> dict:
+    """
+        Shows the number of times a given word appears in the text
+    """
+    text = text.lower().split()
+    result = {}
+    for x in text:
+        if x in words:
+            result[x] = result.get(x, 0) + 1
+    for x in words:
+        if x not in result:
+            result[x] = 0
+    return result
