@@ -7,6 +7,7 @@ from algorithms import (
     first_word,
     first_word_complex,
     bigger_price,
+    popular_words,
 )
 
 
@@ -117,4 +118,20 @@ class TestBiggerPrice(unittest.TestCase):
                 1, [{"name": "pen", "price": 5}, {"name": "whiteboard", "price": 170}]
             ),
             [{"name": "whiteboard", "price": 170}],
+        )
+
+
+class TestPopularWords(unittest.TestCase):
+    def test_resut_count_is_equal_gives_word(self):
+        self.assertEqual(
+            popular_words(
+                """
+            When I was One
+            I had just begun
+            When I was Two
+            I was nearly new
+            """,
+                ["i", "was", "three", "near"],
+            ),
+            {"i": 4, "was": 3, "three": 0, "near": 0},
         )
