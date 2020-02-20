@@ -79,3 +79,12 @@ def popular_words(text: str, words: list) -> dict:
         if x not in result:
             result[x] = 0
     return result
+
+
+def between_markers(text: str, begin: str, end: str) -> str:
+    """
+        returns substring between two given markers
+    """
+    a_index = text.index(begin)
+    b_index = text.index(end)
+    return text[a_index + 1: b_index]
