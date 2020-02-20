@@ -41,3 +41,18 @@ def first_word(text: str) -> str:
         returns the first word in a given text.
     """
     return [x for x in text.split()][0]
+
+
+def first_word_complex(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    l = []
+    for x in text:
+        if x.isalpha() or x == "'":
+            l.append(x)
+        else:
+            l.append(" ")
+    w = ''.join(l)
+    result = w.split()
+    return result[0]
