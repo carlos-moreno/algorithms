@@ -8,6 +8,7 @@ from algorithms import (
     first_word_complex,
     bigger_price,
     popular_words,
+    between_markers,
 )
 
 
@@ -135,3 +136,15 @@ class TestPopularWords(unittest.TestCase):
             ),
             {"i": 4, "was": 3, "three": 0, "near": 0},
         )
+
+
+class TestBetweenMarkers(unittest.TestCase):
+    def test_result_is_apple(self):
+        self.assertEqual(between_markers("What is >apple<", ">", "<"), "apple")
+        self.assertEqual(between_markers("What is >apple<", ">", "<"), "apple")
+
+    def test_result_is_car(self):
+        self.assertEqual(between_markers("What is $car-", "$", "-"), "car")
+
+    def test_result_is_empty(self):
+        self.assertEqual(between_markers("What is ><", ">", "<"), "")
