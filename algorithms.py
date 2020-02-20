@@ -34,3 +34,10 @@ def second_index(text: str, symbol: str) -> [int, None]:
     l = [i for i, x in enumerate(text) if x == symbol]
     if len(l) > 1:
         return l[1]
+
+
+def first_word(text: str) -> str:
+    """
+        returns the first word in a given text.
+    """
+    return [x for x in text.split()][0]
