@@ -56,3 +56,11 @@ def first_word_complex(text: str) -> str:
     w = ''.join(l)
     result = w.split()
     return result[0]
+
+
+def bigger_price(limit: int, data: list) -> list:
+    """
+        TOP most expensive goods
+    """
+    result = sorted(data, key=lambda k: k['price'], reverse=True)
+    return result[:limit]
