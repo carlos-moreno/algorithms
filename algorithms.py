@@ -87,4 +87,23 @@ def between_markers(text: str, begin: str, end: str) -> str:
     """
     a_index = text.index(begin)
     b_index = text.index(end)
-    return text[a_index + 1: b_index]
+    return text[a_index + 1 : b_index]
+
+
+def between_markers_complex(text: str, begin: str, end: str) -> str:
+    """
+        returns substring between two given markers
+    """
+    length_begin = len(begin)
+    index_begin = text.index(begin) if begin in text else None
+    index_end = text.index(end) if end in text else None
+    if begin in text and end in text and index_end < index_begin:
+        return ""
+    elif begin in text and end in text:
+        return text[index_begin + length_begin : index_end]
+    elif begin in text and end not in text:
+        return text[index_begin + length_begin :]
+    elif begin not in text and end in text:
+        return text[:index_end]
+    else:
+        return text
