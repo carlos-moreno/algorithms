@@ -9,6 +9,7 @@ from algorithms import (
     bigger_price,
     popular_words,
     between_markers,
+    between_markers_complex,
 )
 
 
@@ -148,3 +149,18 @@ class TestBetweenMarkers(unittest.TestCase):
 
     def test_result_is_empty(self):
         self.assertEqual(between_markers("What is ><", ">", "<"), "")
+
+
+class TestBetweenMarkersComplex(unittest.TestCase):
+    def test_result(self):
+        self.assertEqual(between_markers_complex("What is >apple<", ">", "<"), "apple")
+        self.assertEqual(
+            between_markers_complex(
+                "<head><title>My new site</title></head>", "<title>", "</title>"
+            ),
+            "My new site",
+        )
+        self.assertEqual(between_markers_complex("No[/b] hi", "[b]", "[/b]"), "No")
+        self.assertEqual(between_markers_complex("No [b]hi", "[b]", "[/b]"), "hi")
+        self.assertEqual(between_markers_complex("No hi", "[b]", "[/b]"), "No hi")
+        self.assertEqual(between_markers_complex("No <hi>", ">", "<"), "")
