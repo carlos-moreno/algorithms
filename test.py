@@ -12,6 +12,7 @@ from algorithms import (
     between_markers_complex,
     all_the_same,
     most_frequent_letter,
+    time_converter,
 )
 
 
@@ -198,3 +199,14 @@ class TestMostFrequentLetter(unittest.TestCase):
 
     def test_result_is_m(self):
         self.assertEqual(most_frequent_letter("Lorem ipsum dolor sit amet"), "m")
+
+
+class TestTimeConverter(unittest.TestCase):
+    def test_result_is_1230(self):
+        self.assertEqual(time_converter("12:30"), "12:30 p.m.")
+
+    def test_result_is_0900(self):
+        self.assertEqual(time_converter("09:00"), "9:00 a.m.")
+
+    def test_result_is_1115(self):
+        self.assertEqual(time_converter("23:15"), "11:15 p.m.")
