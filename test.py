@@ -10,7 +10,8 @@ from algorithms import (
     popular_words,
     between_markers,
     between_markers_complex,
-    all_the_same)
+    all_the_same,
+)
 
 
 class TestMultTwo(unittest.TestCase):
@@ -169,7 +170,7 @@ class TestBetweenMarkersComplex(unittest.TestCase):
 class TestAllTheSame(unittest.TestCase):
     def test_result_is_true(self):
         self.assertEqual(all_the_same([1, 1, 1]), True)
-        self.assertEqual(all_the_same(['a', 'a', 'a']), True)
+        self.assertEqual(all_the_same(["a", "a", "a"]), True)
         self.assertEqual(all_the_same([]), True)
         self.assertEqual(all_the_same([1]), True)
 
