@@ -137,21 +137,25 @@ def time_converter(time: str) -> str:
     """
         Returns the converted time
     """
+    MIDDAY = 1200
+    MIDNIGHT = 0
+    THIRTEEN_HOURS = 1300
+    TEN_HOURS = 1000
     result = int(time.replace(":", ""))
-    if result == 0:
-        hour = str(result + 1200)
+    if result == MIDNIGHT:
+        hour = str(result + MIDDAY)
         return f"{hour[:2]}:{hour[2:]} a.m."
-    elif result == 1200:
+    elif result == MIDDAY:
         return f"{time[:2]}{time[2:]} p.m."
-    elif result > 1300:
-        hour = str(result - 1200)
+    elif result > THIRTEEN_HOURS:
+        hour = str(result - MIDDAY)
         if len(hour) > 3:
             return f"{hour[:2]}:{hour[2:]} p.m."
         else:
             return f"{hour[:1]}:{hour[1:]} p.m."
-    elif result > 1200 < 1300:
+    elif result > MIDDAY < THIRTEEN_HOURS:
         return f"{time[:2]}{time[2:]} p.m."
-    elif result < 1000 < 1200:
+    elif result < TEN_HOURS:
         return f"{time[1:2]}{time[2:]} a.m."
     else:
         return f"{time[0:2]}{time[2:]} a.m."
