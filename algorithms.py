@@ -1,4 +1,5 @@
 import string
+from typing import List, Any
 
 
 def mult_two(a: int, b: int) -> int:
@@ -107,3 +108,10 @@ def between_markers_complex(text: str, begin: str, end: str) -> str:
         return text[:index_end]
     else:
         return text
+
+
+def all_the_same(elements: List[Any]) -> bool:
+    """
+        return True if set(list) == 0 or list is empty
+    """
+    return True if len(set(elements)) in [0, 1] else False
