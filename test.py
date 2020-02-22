@@ -194,4 +194,7 @@ class TestMostFrequentLetter(unittest.TestCase):
     def test_result_is_a(self):
         self.assertEqual(most_frequent_letter("AAaooo!!!!"), "a")
         self.assertEqual(most_frequent_letter("abe"), "a")
-        self.assertEqual(most_frequent_letter("a" * 9000 + "b" * 1000), "a")
+        self.assertEqual(most_frequent_letter("a" * 900000000 + "b" * 1000), "a")
+
+    def test_result_is_m(self):
+        self.assertEqual(most_frequent_letter("Lorem ipsum dolor sit amet"), "m")
