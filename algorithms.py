@@ -131,3 +131,27 @@ def most_frequent_letter(text: str) -> str:
 
     result = sorted(l, key=lambda k: (-k["count"], k["name"]))
     return result[0].get("name")
+
+
+def time_converter(time: str) -> str:
+    """
+        Returns the converted time
+    """
+    result = int(time.replace(":", ""))
+    if result == 0:
+        hour = str(result + 1200)
+        return f"{hour[:2]}:{hour[2:]} a.m."
+    elif result == 1200:
+        return f"{time[:2]}{time[2:]} p.m."
+    elif result > 1300:
+        hour = str(result - 1200)
+        if len(hour) > 3:
+            return f"{hour[:2]}:{hour[2:]} p.m."
+        else:
+            return f"{hour[:1]}:{hour[1:]} p.m."
+    elif result > 1200 < 1300:
+        return f"{time[:2]}{time[2:]} p.m."
+    elif result < 1000 < 1200:
+        return f"{time[1:2]}{time[2:]} a.m."
+    else:
+        return f"{time[0:2]}{time[2:]} a.m."
