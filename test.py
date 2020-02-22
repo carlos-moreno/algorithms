@@ -11,6 +11,7 @@ from algorithms import (
     between_markers,
     between_markers_complex,
     all_the_same,
+    most_frequent_letter,
 )
 
 
@@ -177,3 +178,20 @@ class TestAllTheSame(unittest.TestCase):
     def test_result_is_false(self):
         self.assertEqual(all_the_same([1, 2, 1]), False)
         self.assertEqual(all_the_same([1, 2, 2, 1]), False)
+
+
+class TestMostFrequentLetter(unittest.TestCase):
+    def test_result_is_l(self):
+        self.assertEqual(most_frequent_letter("Hello World!"), "l")
+
+    def test_result_is_o(self):
+        self.assertEqual(most_frequent_letter("How do you do?"), "o")
+        self.assertEqual(most_frequent_letter("Oops!"), "o")
+
+    def test_result_is_e(self):
+        self.assertEqual(most_frequent_letter("One"), "e")
+
+    def test_result_is_a(self):
+        self.assertEqual(most_frequent_letter("AAaooo!!!!"), "a")
+        self.assertEqual(most_frequent_letter("abe"), "a")
+        self.assertEqual(most_frequent_letter("a" * 9000 + "b" * 1000), "a")
