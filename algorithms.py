@@ -115,3 +115,20 @@ def all_the_same(elements: List[Any]) -> bool:
         return True if set(list) == 0 or list is empty
     """
     return True if len(set(elements)) in [0, 1] else False
+
+
+def most_frequent_letter(text: str) -> str:
+    """
+        Return the most frequent letter in lower case as a string.
+    """
+    d = {}
+    for x in text.lower():
+        if str(x).isalpha():
+            d[x] = d.get(x, 0) + 1
+
+    d = sorted(d.items(), key=lambda x: (x[1], x[0]), reverse=True)
+    if d[0][1] != d[1][1]:
+        return d[0][0]
+    else:
+        d = sorted(d, key=lambda x: x[0])
+        return d[0][0]
