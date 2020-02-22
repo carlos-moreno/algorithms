@@ -121,14 +121,13 @@ def most_frequent_letter(text: str) -> str:
     """
         Return the most frequent letter in lower case as a string.
     """
+    l = []
     d = {}
-    for x in text.lower():
-        if str(x).isalpha():
+    text = text.lower()
+    for x in text:
+        if x.isalpha() and x not in d:
             d[x] = d.get(x, 0) + 1
+            l.append({"name": x, "count": text.count(x)})
 
-    d = sorted(d.items(), key=lambda x: (x[1], x[0]), reverse=True)
-    if d[0][1] != d[1][1]:
-        return d[0][0]
-    else:
-        d = sorted(d, key=lambda x: x[0])
-        return d[0][0]
+    result = sorted(l, key=lambda k: (-k["count"], k["name"]))
+    return result[0].get("name")
