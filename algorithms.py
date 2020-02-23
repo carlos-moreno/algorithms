@@ -162,7 +162,9 @@ def time_converter(time: str) -> str:
 
 
 def frequency_sort(items):
-    # Return rating by frequency
+    """
+        Return rating by frequency
+    """
     if sorted(items) == list(set(items)):
         return items
     elif len(set([items.count(x) for x in items])) == 1:
