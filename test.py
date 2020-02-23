@@ -13,6 +13,7 @@ from algorithms import (
     all_the_same,
     most_frequent_letter,
     time_converter,
+    frequency_sort,
 )
 
 
@@ -210,3 +211,18 @@ class TestTimeConverter(unittest.TestCase):
 
     def test_result_is_1115(self):
         self.assertEqual(time_converter("23:15"), "11:15 p.m.")
+
+
+class TestFrequencySort(unittest.TestCase):
+    def test_result(self):
+        self.assertEqual(
+            list(frequency_sort([4, 6, 2, 2, 6, 4, 4, 4])), [4, 4, 4, 4, 6, 6, 2, 2]
+        )
+        self.assertEqual(
+            list(frequency_sort(["bob", "bob", "carl", "alex", "bob"])),
+            ["bob", "bob", "bob", "carl", "alex",],
+        )
+        self.assertEqual(list(frequency_sort([17, 99, 42])), [17, 99, 42])
+        self.assertEqual(list(frequency_sort([])), [])
+        self.assertEqual(list(frequency_sort([1])), [1])
+        self.assertEqual(list(frequency_sort([1, 2, 2, 1])), [1, 1, 2, 2])
