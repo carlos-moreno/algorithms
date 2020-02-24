@@ -1,5 +1,6 @@
 import string
 from typing import List, Any
+from collections.abc import Iterable
 
 
 def mult_two(a: int, b: int) -> int:
@@ -173,3 +174,15 @@ def frequency_sort(items):
         return sorted(
             sorted(items, reverse=True), key=lambda k: (items.count(k)), reverse=True
         )
+
+
+def chain(iterables):
+    if isinstance(iterables, Iterable):
+        for item in iterables:
+            yield from flat_list(item)
+    else:
+        yield iterables
+
+
+def flat_list(array):
+    return list(chain(array))
