@@ -14,6 +14,7 @@ from algorithms import (
     most_frequent_letter,
     time_converter,
     frequency_sort,
+    flat_list,
 )
 
 
@@ -226,3 +227,14 @@ class TestFrequencySort(unittest.TestCase):
         self.assertEqual(list(frequency_sort([])), [])
         self.assertEqual(list(frequency_sort([1])), [1])
         self.assertEqual(list(frequency_sort([1, 2, 2, 1])), [1, 1, 2, 2])
+
+
+class TestFlatList(unittest.TestCase):
+    def test_result_is(self):
+        self.assertEqual(flat_list([1, 2, 3]), [1, 2, 3])
+        self.assertEqual(flat_list([1, [2, 2, 2], 4]), [1, 2, 2, 2, 4])
+        self.assertEqual(
+            flat_list([[[2]], [4, [5, 6, [6], 6, 6, 6], 7]]),
+            [2, 4, 5, 6, 6, 6, 6, 6, 7,],
+        )
+        self.assertEqual(flat_list([-1, [1, [-2], 1], -1]), [-1, 1, -2, 1, -1])
