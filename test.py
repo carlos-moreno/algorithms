@@ -16,6 +16,7 @@ from algorithms import (
     frequency_sort,
     flat_list,
     sun_angle,
+    long_repeat,
 )
 
 
@@ -246,3 +247,14 @@ class TestSunAngle(unittest.TestCase):
         self.assertEqual(sun_angle("07:00"), 15)
         self.assertEqual(sun_angle("12:15"), 93.75)
         self.assertEqual(sun_angle("01:23"), "I don't see the sun!")
+
+
+class TestLongRepeat(unittest.TestCase):
+    def test_result_is_4(self):
+        self.assertEqual(long_repeat("sdsffffse"), 4)
+
+    def test_result_is_3(self):
+        self.assertEqual(long_repeat("ddvvrwwwrggg"), 3)
+
+    def test_result_is_2(self):
+        self.assertEqual(long_repeat("abababaab"), 2)
