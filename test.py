@@ -15,6 +15,7 @@ from algorithms import (
     time_converter,
     frequency_sort,
     flat_list,
+    sun_angle,
 )
 
 
@@ -238,3 +239,10 @@ class TestFlatList(unittest.TestCase):
             [2, 4, 5, 6, 6, 6, 6, 6, 7,],
         )
         self.assertEqual(flat_list([-1, [1, [-2], 1], -1]), [-1, 1, -2, 1, -1])
+
+
+class TestSunAngle(unittest.TestCase):
+    def test_result_is(self):
+        self.assertEqual(sun_angle("07:00"), 15)
+        self.assertEqual(sun_angle("12:15"), 93.75)
+        self.assertEqual(sun_angle("01:23"), "I don't see the sun!")
