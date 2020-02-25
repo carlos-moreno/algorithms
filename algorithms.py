@@ -1,6 +1,7 @@
 import string
 from typing import List, Any
 from collections.abc import Iterable
+import re
 
 
 def mult_two(a: int, b: int) -> int:
@@ -200,3 +201,15 @@ def sun_angle(time):
             return (int(time[:2]) * 15) - 90
     else:
         return "I don't see the sun!"
+
+
+def long_repeat(line: str) -> int:
+    """
+        length the longest substring that consists of the same char
+    """
+    result = 0
+    for item in line:
+        x = len(max(re.findall(f"{item}+", line)))
+        if x >= result:
+            result = x
+    return result
