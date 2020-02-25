@@ -186,3 +186,17 @@ def chain(iterables):
 
 def flat_list(array):
     return list(chain(array))
+
+
+def sun_angle(time):
+    SIX_HOURS = "06:00"
+    EIGHTEEN_HOURS = "18:00"
+    if time >= SIX_HOURS and time <= EIGHTEEN_HOURS:
+        if (int(time[3:]) / 4) > 0:
+            return float(
+                "{:.2f}".format(((int(time[:2]) * 15) - 90) + (int(time[3:]) / 4))
+            )
+        else:
+            return (int(time[:2]) * 15) - 90
+    else:
+        return "I don't see the sun!"
