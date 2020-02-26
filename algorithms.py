@@ -213,3 +213,24 @@ def long_repeat(line: str) -> int:
         if x >= result:
             result = x
     return result
+
+
+VOWELS = "aeiouy"
+
+
+def translate(phrase):
+    regex = re.compile(r"\W")
+    result = []
+    index = 0
+    while index < len(phrase):
+        if phrase[index].lower() in VOWELS:
+            result.append(phrase[index])
+            index += 3
+        elif regex.findall(phrase[index]):
+            result.append(phrase[index])
+            index += 1
+        else:
+            result.append(phrase[index])
+            index += 2
+
+    return "".join(result)
