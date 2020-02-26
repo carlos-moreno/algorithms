@@ -17,6 +17,7 @@ from algorithms import (
     flat_list,
     sun_angle,
     long_repeat,
+    translate,
 )
 
 
@@ -258,3 +259,17 @@ class TestLongRepeat(unittest.TestCase):
 
     def test_result_is_2(self):
         self.assertEqual(long_repeat("abababaab"), 2)
+
+
+class TestTranslate(unittest.TestCase):
+    def test_result_is_hello(self):
+        self.assertEqual(translate("hieeelalaooo"), "hello")
+
+    def test_result_is_how_you_doin(self):
+        self.assertEqual(translate("hoooowe yyyooouuu duoooiiine"), "how you doin")
+
+    def test_result_is_a_b_c_d_e_f(self):
+        self.assertEqual(translate("aaa bo cy da eee fe"), "a b c d e f")
+
+    def test_result_is_sos_aaa(self):
+        self.assertEqual(translate("sooooso aaaaaaaaa"), "sos aaa")
