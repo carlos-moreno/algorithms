@@ -19,6 +19,7 @@ from algorithms import (
     long_repeat,
     translate,
     worth_of_words,
+    verify_anagrams,
 )
 
 
@@ -284,3 +285,12 @@ class TestWorthOfWord(unittest.TestCase):
         self.assertEqual(
             worth_of_words(["zero", "one", "two", "three", "four", "five"]), "zero"
         )
+
+
+class TestVerifyAnagram(unittest.TestCase):
+    def test_result_is_boolean(self):
+        self.assertEqual(verify_anagrams("Programming", "Gram Ring Mop"), True)
+        self.assertEqual(verify_anagrams("Kyoto", "Tokyo"), True)
+
+    def test_result_is_false(self):
+        self.assertEqual(verify_anagrams("Hello", "Ole Oh"), False)
