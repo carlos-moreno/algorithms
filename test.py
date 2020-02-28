@@ -18,6 +18,7 @@ from algorithms import (
     sun_angle,
     long_repeat,
     translate,
+    worth_of_words,
 )
 
 
@@ -273,3 +274,13 @@ class TestTranslate(unittest.TestCase):
 
     def test_result_is_sos_aaa(self):
         self.assertEqual(translate("sooooso aaaaaaaaa"), "sos aaa")
+
+
+class TestWorthOfWord(unittest.TestCase):
+    def test_result_is_quiz(self):
+        self.assertEqual(worth_of_words(["hi", "quiz", "bomb", "president"]), "quiz")
+
+    def test_result_is_zero(self):
+        self.assertEqual(
+            worth_of_words(["zero", "one", "two", "three", "four", "five"]), "zero"
+        )
