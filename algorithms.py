@@ -283,3 +283,14 @@ def verify_anagrams(first_word, second_word):
     return sorted("".join(first_word.split()).lower()) == sorted(
         "".join(second_word.split()).lower()
     )
+
+
+def restricted_sum(data):
+    if len(data) > 1:
+        data[1] = data[0] + data[1]
+        data.remove(data[0])
+        restricted_sum(data)
+    if len(data) == 1:
+        return data[0]
+    if not data:
+        return 0
