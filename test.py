@@ -20,6 +20,7 @@ from algorithms import (
     translate,
     worth_of_words,
     verify_anagrams,
+    restricted_sum,
 )
 
 
@@ -294,3 +295,11 @@ class TestVerifyAnagram(unittest.TestCase):
 
     def test_result_is_false(self):
         self.assertEqual(verify_anagrams("Hello", "Ole Oh"), False)
+
+
+class TestRestrictedSum(unittest.TestCase):
+    def test_result_is_6(self):
+        self.assertEqual(restricted_sum([1, 2, 3]), 6)
+
+    def test_result_is_12(self):
+        self.assertEqual(restricted_sum([2, 2, 2, 2, 2, 2]), 12)
