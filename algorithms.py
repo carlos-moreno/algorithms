@@ -2,6 +2,7 @@ import string
 from typing import List, Any
 from collections.abc import Iterable
 import re
+from unicodedata import normalize
 
 
 def mult_two(a: int, b: int) -> int:
@@ -294,3 +295,16 @@ def restricted_sum(data):
         return data[0]
     if not data:
         return 0
+
+
+def checkio(in_string):
+    "remove accents"
+    s = in_string.encode("utf-8")
+
+    n = normalize("NFKD", s.decode("utf-8")).encode("ASCII", "ignore")
+    n = str(n, "utf-8")
+
+    if n:
+        return n
+    else:
+        return in_string
