@@ -297,7 +297,7 @@ def restricted_sum(data):
         return 0
 
 
-def checkio(in_string):
+def remove_accents(in_string):
     "remove accents"
     s = in_string.encode("utf-8")
 
