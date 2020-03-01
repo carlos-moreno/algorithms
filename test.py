@@ -21,6 +21,7 @@ from algorithms import (
     worth_of_words,
     verify_anagrams,
     restricted_sum,
+    remove_accents,
 )
 
 
@@ -303,3 +304,14 @@ class TestRestrictedSum(unittest.TestCase):
 
     def test_result_is_12(self):
         self.assertEqual(restricted_sum([2, 2, 2, 2, 2, 2]), 12)
+
+
+class TestRemoveAccents(unittest.TestCase):
+    def test_result_is_preferent(self):
+        self.assertEqual(remove_accents(u"préfèrent"), u"preferent")
+
+    def test_result_is_loai_tran_lon(self):
+        self.assertEqual(remove_accents(u"loài trăn lớn"), u"loai tran lon")
+
+    def test_result_is_完好無缺(self):
+        self.assertEqual(remove_accents("完好無缺"), u"完好無缺")
