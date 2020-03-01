@@ -2,7 +2,7 @@ import string
 from typing import List, Any
 from collections.abc import Iterable
 import re
-from unicodedata import normalize
+from unicodedata import normalize, category
 
 
 def mult_two(a: int, b: int) -> int:
@@ -298,13 +298,8 @@ def restricted_sum(data):
 
 
 def remove_accents(in_string):
-    "remove accents"
-    s = in_string.encode("utf-8")
-
-    n = normalize("NFKD", s.decode("utf-8")).encode("ASCII", "ignore")
-    n = str(n, "utf-8")
-
-    if n:
-        return n
-    else:
-        return in_string
+    """
+        Remove accents
+    """
+    result = "".join(c for c in normalize("NFD", in_string) if category(c) != "Mn")
+    return result
