@@ -22,6 +22,7 @@ from algorithms import (
     verify_anagrams,
     restricted_sum,
     remove_accents,
+    from_camel_case,
 )
 
 
@@ -315,3 +316,21 @@ class TestRemoveAccents(unittest.TestCase):
 
     def test_result_is_完好無缺(self):
         self.assertEqual(remove_accents("完好無缺"), u"完好無缺")
+
+
+class TestFromCamelCase(unittest.TestCase):
+    def test_result_is_my_function_name(self):
+        self.assertEqual(from_camel_case("MyFunctionName"), "my_function_name")
+
+    def test_result_is_i_phone(self):
+        self.assertEqual(
+            from_camel_case("ThisFunctionIsEmpty"), "this_function_is_empty"
+        )
+
+    def test_result_is_this_function_is_empty(self):
+        self.assertEqual(
+            from_camel_case("ThisFunctionIsEmpty"), "this_function_is_empty"
+        )
+
+    def test_result_is_name(self):
+        self.assertEqual(from_camel_case("Name"), "name")
