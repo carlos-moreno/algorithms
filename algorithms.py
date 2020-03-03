@@ -303,3 +303,14 @@ def remove_accents(in_string):
     """
     result = "".join(c for c in normalize("NFD", in_string) if category(c) != "Mn")
     return result
+
+
+def from_camel_case(name: str) -> str:
+    """
+        Return string in camel case format
+    """
+    result = [x for x in name]
+    for v in result:
+        if v.isupper() and result.index(v) > 0:
+            result[result.index(v)] = f"_{v}"
+    return "".join(result).lower()
