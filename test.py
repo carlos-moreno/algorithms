@@ -23,7 +23,7 @@ from algorithms import (
     restricted_sum,
     remove_accents,
     from_camel_case,
-)
+    to_camel_case)
 
 
 class TestMultTwo(unittest.TestCase):
@@ -334,3 +334,17 @@ class TestFromCamelCase(unittest.TestCase):
 
     def test_result_is_name(self):
         self.assertEqual(from_camel_case("Name"), "name")
+
+
+class TestToCamelCase(unittest.TestCase):
+    def test_result_is_(self):
+        self.assertEqual(to_camel_case(''), '')
+
+    def test_result_is_theStealthWarrior(self):
+        self.assertEqual(to_camel_case("the_stealth_warrior"), "theStealthWarrior")
+
+    def test_result_is_TheStealthWarrior(self):
+        self.assertEqual(to_camel_case("The-Stealth-Warrior"), "TheStealthWarrior")
+
+    def test_result_is_ABC(self):
+        self.assertEqual(to_camel_case("A-B-C"), "ABC")
