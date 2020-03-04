@@ -314,3 +314,11 @@ def from_camel_case(name: str) -> str:
         if v.isupper() and result.index(v) > 0:
             result[result.index(v)] = f"_{v}"
     return "".join(result).lower()
+
+
+def to_camel_case(text: str) -> str:
+    """
+        Return string in camel case format
+    """
+    reg = re.split(r"[\_-]", text)
+    return reg[0] + ''.join([x.title() for x in reg[1:]])
