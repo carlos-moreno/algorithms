@@ -130,3 +130,6 @@ dmypy.json
 
 # Directory idea
 *.idea
+
+# Directory vscode
+*.vscode
