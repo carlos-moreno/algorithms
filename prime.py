@@ -11,7 +11,7 @@ def is_prime(number: int) -> bool:
     return False if count > 2 else True
 
 
-def qtd_number_primes(number: int) -> int:
+def n_primos(number: int) -> int:
     count = 0
     if number < 2:
         return 0
