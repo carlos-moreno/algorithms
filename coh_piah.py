@@ -1,4 +1,6 @@
 import re
+from statistics import median
+from operator import itemgetter
 
 
 def le_assinatira():
@@ -98,7 +100,10 @@ def compara_assinatura(as_a, as_b):
         TO IMPLEMENT. This function receives two text signatures 
         and must return the degree of similarity in the signatures.
     """
-    pass
+    diferenca = sum(abs(a - b) for a, b in zip(as_a, as_b))
+    print(diferenca)
+    print(diferenca / 6)
+    return diferenca / 6
 
 
 def calcula_assinatura(texto):
@@ -106,7 +111,14 @@ def calcula_assinatura(texto):
         TO IMPLEMENT. This function receives a text and must return 
         the text signature.
     """
-    pass
+    return [
+        calcula_tamanho_medio_palavra(texto),
+        calcula_type_token(texto),
+        calcula_hapax_legomana(texto),
+        calcula_tamanho_medio_sentenca(texto),
+        calcula_complexidade_sentenca(texto),
+        calcula_tamanho_medio_frase(texto),
+    ]
 
 
 def avalia_textos(textos, ass_cp):
@@ -115,4 +127,70 @@ def avalia_textos(textos, ass_cp):
         an ass_cp signature and must return the number (1 to n) of
         the text most likely to have been infected with COH-PIAH.
     """
-    pass
+    aux = {}
+    for k, v in enumerate(textos):
+        ass = calcula_assinatura(v)
+        aux[str(k + 1)] = compara_assinatura(ass_cp, ass)
+    print(aux)
+    aux = sorted(aux.items(), key=itemgetter(1))
+    return aux[0][0]
+
+
+def calcula_tamanho_medio_palavra(texto: str) -> float:
+    texto = "".join(re.split(r"[.,:;]+", texto))
+    aux = []
+    for item in separa_palavras(texto):
+        aux.append(len(item))
+    return sum(aux) / len(aux)
+
+
+def calcula_type_token(texto: str) -> float:
+    texto = "".join(re.split(r"[.,:;]+", texto))
+    aux = []
+    for item in separa_palavras(texto):
+        aux.append(item)
+    return len(set(aux)) / len(aux)
+
+
+def calcula_hapax_legomana(texto: str) -> float:
+    texto = re.split(r"[,:;\s]+", texto)
+    dicionario_auxiliar = {}
+    lista_palavras_unicas = []
+
+    for item in texto:
+        dicionario_auxiliar[item.lower()] = dicionario_auxiliar.get(item.lower(), 0) + 1
+    for k, v in dicionario_auxiliar.items():
+        if v == 1:
+            lista_palavras_unicas.append(k)
+    return len(lista_palavras_unicas) / len(texto)
+
+
+def calcula_tamanho_medio_sentenca(texto: str) -> float:
+    average = []
+    for item in separa_sentencas(texto):
+        average.append(len(item))
+    return median(average)
+
+
+def calcula_complexidade_sentenca(texto: str) -> float:
+    sentencas = separa_sentencas(texto)
+    return len(retorna_lista_frases(texto)) / len(sentencas)
+
+
+def calcula_tamanho_medio_frase(texto: str) -> float:
+    tamanho_das_frases = [len(item) for item in retorna_lista_frases(texto)]
+    return sum(tamanho_das_frases) / len(retorna_lista_frases(texto))
+
+
+def retorna_lista_frases(texto: str) -> list:
+    frases = []
+    sentencas = separa_sentencas(texto)
+    for item in sentencas:
+        frases.extend(separa_frases(item))
+    return frases
+
+
+if __name__ == "__main__":
+    assinatura = le_assinatira()
+    textos = le_textos()
+    avalia_textos(textos, assinatura)
