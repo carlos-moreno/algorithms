@@ -1,5 +1,5 @@
 import unittest
-from coh_piah import calcula_assinatura
+from coh_piah import calcula_assinatura, calcula_type_token
 
 
 class CalculaAssinaturaTestCase(unittest.TestCase):
@@ -22,3 +22,29 @@ class CalculaAssinaturaTestCase(unittest.TestCase):
                 45.888888888888886,
             ],
         )
+
+
+class CalculaTypeTokenTestCase(unittest.TestCase):
+    def test_type_token_0_743(self):
+        texto = (
+            "NOSSA alegria diante dum sistema metafisico, nossa satisfação em presença duma construção "
+            "do pensamento, em que a organização espiritual do mundo se mostra num conjunto lógico, "
+            "coerente a harmônico, sempre dependem eminentemente da estética; têm a mesma origem que o "
+            "prazer, que a alta satisfação, sempre serena afinal, que a atividade artística nos proporciona "
+            "quando cria a ordem e a forma a nos permite abranger com a vista o caos da vida, dando-lhe "
+            "transparência."
+        )
+        self.assertEqual(calcula_type_token(texto), 0.743)
+
+    def test_type_token_0_777(self):
+        texto = (
+            "Voltei-me para ela; Capitu tinha os olhos no chão. Ergueu-os logo, devagar, e ficamos a olhar "
+            "um para o outro... Confissão de crianças, tu valias bem duas ou três páginas, mas quero ser "
+            "poupado. Em verdade, não falamos nada; o muro falou por nós. Não nos movemos, as mãos é que "
+            "se estenderam pouco a pouco, todas quatro, pegando-se, apertando-se, fundindo-se. Não marquei a "
+            "hora exata daquele gesto. Devia tê-la marcado; sinto a falta de uma nota escrita naquela mesma "
+            "noite, e que eu poria aqui com os erros de ortografia que trouxesse, mas não traria nenhum, "
+            "tal era a diferença entre o estudante e o adolescente. Conhecia as regras do escrever, sem "
+            "suspeitar as do amar; tinha orgias de latim e era virgem de mulheres."
+        )
+        self.assertEqual(calcula_type_token(texto), 0.777)
