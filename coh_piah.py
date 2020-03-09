@@ -130,39 +130,34 @@ def avalia_textos(textos, ass_cp):
     aux = {}
     for k, v in enumerate(textos):
         ass = calcula_assinatura(v)
-        aux[str(k + 1)] = compara_assinatura(ass_cp, ass)
-    print(aux)
+        aux[k + 1] = compara_assinatura(ass_cp, ass)
     aux = sorted(aux.items(), key=itemgetter(1))
     return aux[0][0]
 
 
 def calcula_tamanho_medio_palavra(texto: str) -> float:
-    texto = "".join(re.split(r"[.,:;]+", texto))
-    aux = []
-    for item in separa_palavras(texto):
-        aux.append(len(item))
-    return sum(aux) / len(aux)
+    frases = retorna_lista_frases(texto)
+    palavras = []
+    for frase in frases:
+        palavras.extend([len(palavra) for palavra in separa_palavras(frase)])
+
+    return sum(palavras) / len(palavras)
 
 
 def calcula_type_token(texto: str) -> float:
-    texto = "".join(re.split(r"[.,:;]+", texto))
-    aux = []
-    for item in separa_palavras(texto):
-        aux.append(item)
-    return len(set(aux)) / len(aux)
+    frases = retorna_lista_frases(texto)
+    palavras = []
+    for frase in frases:
+        palavras.extend(separa_palavras(frase))
+    return n_palavras_diferentes(palavras) / len(palavras)
 
 
 def calcula_hapax_legomana(texto: str) -> float:
-    texto = re.split(r"[,:;\s]+", texto)
-    dicionario_auxiliar = {}
-    lista_palavras_unicas = []
-
-    for item in texto:
-        dicionario_auxiliar[item.lower()] = dicionario_auxiliar.get(item.lower(), 0) + 1
-    for k, v in dicionario_auxiliar.items():
-        if v == 1:
-            lista_palavras_unicas.append(k)
-    return len(lista_palavras_unicas) / len(texto)
+    frases = retorna_lista_frases(texto)
+    palavras = []
+    for frase in frases:
+        palavras.extend(separa_palavras(frase))
+    return n_palavras_diferentes(palavras) / n_palavras_unicas(palavras)
 
 
 def calcula_tamanho_medio_sentenca(texto: str) -> float:
@@ -193,4 +188,5 @@ def retorna_lista_frases(texto: str) -> list:
 if __name__ == "__main__":
     assinatura = le_assinatira()
     textos = le_textos()
-    avalia_textos(textos, assinatura)
+    result = avalia_textos(textos, assinatura)
+    print(result)
