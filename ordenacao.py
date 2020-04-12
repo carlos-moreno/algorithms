@@ -46,6 +46,15 @@ class Ordenacao:
 
         return lst
 
+    def insertion_sort(self, lst):
+        for i in range(1, len(lst)):
+            key = lst[i]
+            j = i
+            while j > 0 and key < lst[j - 1]:
+                lst[j] = lst[j - 1]
+                j -= 1
+            lst[j] = key
+
     def list_generation(self):
         lst = [randrange(-10000, 10000) for _ in range(self.size)]
         return lst
@@ -54,25 +63,3 @@ class Ordenacao:
         lst = [x for x in range(self.size)]
         lst[self.size // 10] = randrange(len(lst))
         return lst
-
-
-if __name__ == "__main__":
-    o = Ordenacao(5000)
-    lst_1 = o.list_generation_v2()
-    lst_2 = lst_1.copy()
-    lst_3 = lst_1.copy()
-
-    before = time()
-    o.bubblesort(lst_1)
-    after = time()
-    print(f"The execution time bubblesort is {after - before}")
-
-    before = time()
-    o.bubblesort_v2(lst_2)
-    after = time()
-    print(f"The execution time bubblesort v2 is {after - before}")
-
-    before = time()
-    o.direct_selection(lst_3)
-    after = time()
-    print(f"The execution time direct_selection is {after - before}")
