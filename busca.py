@@ -13,7 +13,6 @@ class Busca:
                 return k
         return -1
 
-
     def busca_sequencial(self):
         """
             Retorna True caso o elemento esteja na sequência, caso contrário,
@@ -37,3 +36,20 @@ class Busca:
             else:
                 primeiro = meio + 1
         return -1
+
+
+def binary_search_recursive(lista, elemento, min=0, max=None):
+    if max == None:
+        max = len(lista) - 1
+
+    if max < min:
+        return False
+    else:
+        meio = min + (max - min) // 2
+
+    if lista[meio] > elemento:
+        return binary_search_recursive(lista, elemento, min, meio - 1)
+    elif lista[meio] < elemento:
+        return binary_search_recursive(lista, elemento, meio + 1, max)
+    else:
+        return meio
