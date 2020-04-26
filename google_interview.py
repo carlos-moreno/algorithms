@@ -9,34 +9,10 @@ which all adjacent digits differ by 1
 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 21, 23
 """
 
-
-def len_(number):
-    return len(str(number))
-
-
-def first_number_to_sum(number):
-    if len_(number) > 1:
-        return int(str(number)[-2])
-
-
-def second_number_to_sum(number):
-    if len_(number) > 1:
-        return int(str(number)[-1])
-
-
-def smallest_to_largest(number):
-    return first_number_to_sum(number) - second_number_to_sum(number)
-
-
-def largest_to_smallest(number):
-    return second_number_to_sum(number) - first_number_to_sum(number)
-
-
 def number_is_valid(number):
     return (
-        len_(number) == 1
-        or smallest_to_largest(number) == 1
-        or largest_to_smallest(number) == 1
+        number < 11
+        or abs(int(str(number)[-2]) - int(str(number)[-1])) == 1
     )
 
 
