@@ -9,11 +9,9 @@ which all adjacent digits differ by 1
 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 21, 23
 """
 
+
 def number_is_valid(number):
-    return (
-        number < 11
-        or abs(int(str(number)[-2]) - int(str(number)[-1])) == 1
-    )
+    return number < 11 or abs(int(str(number)[-2]) - int(str(number)[-1])) == 1
 
 
 def number_adjacent(number: int) -> str:
