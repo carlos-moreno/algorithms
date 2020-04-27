@@ -30,12 +30,10 @@ number 5
 
 
 def build_print(number, n):
-    if n < 3:
+    if n < 3 or n == number:
         s = f'{"1" * n}'
-    elif n > 2 and n < number:
-        s = f'{"1"}{" " * (n - 2)}{"1"}'
     else:
-        s = f'{"1" * number}'
+        s = f'{"1"}{" " * (n - 2)}{"1"}'
     return s
 
 
