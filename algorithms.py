@@ -322,3 +322,7 @@ def to_camel_case(text: str) -> str:
     """
     reg = re.split(r"[\_-]", text)
     return reg[0] + ''.join([x.title() for x in reg[1:]])
+
+
+def multiple_3_or_5(number: int) -> int:
+    return sum([x for x in range(number) if x % 3 == 0 or x % 5 == 0])

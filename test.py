@@ -23,7 +23,8 @@ from algorithms import (
     restricted_sum,
     remove_accents,
     from_camel_case,
-    to_camel_case)
+    to_camel_case,
+    multiple_3_or_5)
 
 
 class TestMultTwo(unittest.TestCase):
@@ -348,3 +349,8 @@ class TestToCamelCase(unittest.TestCase):
 
     def test_result_is_ABC(self):
         self.assertEqual(to_camel_case("A-B-C"), "ABC")
+
+
+class TestMultiple_3_or_5(unittest.TestCase):
+    def test_number_10(self):
+        self.assertEqual(multiple_3_or_5(10), 23)
