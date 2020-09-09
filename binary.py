@@ -13,3 +13,16 @@ def binary(num, l=[]):
         num //= 2
     return ''.join(l[::-1]).zfill(8)
 
+
+class Converter:
+    def __init__(self, num):
+        self.num = num
+        self.lst = []
+
+    def binary(self):
+        """Function to return a number decimal in binary"""
+        aux = self.num
+        while aux > 0:
+            self.lst.append(str(aux % 2))
+            aux //= 2
+        return ''.join(self.lst[::-1]).zfill(8)
