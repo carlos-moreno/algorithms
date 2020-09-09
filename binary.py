@@ -25,4 +25,7 @@ class Converter:
         while aux > 0:
             self.lst.append(str(aux % 2))
             aux //= 2
-        return ''.join(self.lst[::-1]).zfill(8)
+        return ''.join(self.sort_list()).zfill(8)
+
+    def sort_list(self):
+        return self.lst[::-1]
